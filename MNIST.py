@@ -11,8 +11,14 @@ test_img = test_img/255.0
 train_label = keras.utils.to_categorical(train_label)
 test_label = keras.utils.to_categorical(test_label)
 
+data_augmentation = keras.Sequential([
+  keras.layers.RandomFlip("horizontal_and_vertical"),
+  keras.layers.RandomRotation(0.2),
+])
+
 # define the model architecture
 model = keras.Sequential([
+    data_augmentation,
     keras.layers.Conv2D(32, (5, 5), padding="same", input_shape=[28, 28, 1]),
     keras.layers.MaxPool2D((2,2)),
     keras.layers.Conv2D(64, (5, 5), padding="same"),
