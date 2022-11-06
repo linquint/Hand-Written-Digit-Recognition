@@ -34,7 +34,7 @@ model.fit(
     datagen.flow(train_img, train_label, batch_size=32),
     validation_data=datagen.flow(test_img,test_label, batch_size=8),
     steps_per_epoch=len(train_img) / 32,
-    epochs=1
+    epochs=5
 )
 test_loss,test_acc = model.evaluate(test_img, test_label)
 print('Test accuracy:', test_acc)
