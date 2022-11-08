@@ -191,7 +191,9 @@ async function loadModel() {
   // load the model using a HTTPS request (where you have stored your model files)
   model = await tf.loadLayersModel("models/model.json");
   
+  // hide loader
   document.getElementById('loader').style.display = "none";
+  
   console.log("model loaded..");
 }
 

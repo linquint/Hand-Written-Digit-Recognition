@@ -20,6 +20,7 @@ shift = 0.15
 datagen = ImageDataGenerator(rotation_range=15, zoom_range=0.1, width_shift_range=shift, height_shift_range=shift)
 datagen.fit(train_img)
 
+# Learning rate reduction that will half the learning rate after validation accuracy decreases twice
 learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy', patience=2, verbose=1, factor=0.5, min_lr=0.00001)
 
 # define the model architecture
