@@ -10,9 +10,12 @@ train_img = train_img.reshape([-1, 28, 28, 1])
 test_img = test_img.reshape([-1, 28, 28, 1])
 train_img = train_img/255.0
 test_img = test_img/255.0
+
+# convert class vectors to binary class matrices --> one-hot encoding
 train_label = keras.utils.to_categorical(train_label)
 test_label = keras.utils.to_categorical(test_label)
 
+# data augmentation
 shift = 0.15
 datagen = ImageDataGenerator(rotation_range=15, zoom_range=0.1, width_shift_range=shift, height_shift_range=shift)
 datagen.fit(train_img)
@@ -21,6 +24,7 @@ learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy', patience=2, 
 
 # define the model architecture
 model = keras.Sequential([
+    keras.layers.Conv2D(32, (5, 5), padding="same", input_shape=[28, 28, 1], activation='relu'),
     keras.layers.Conv2D(32, (5, 5), padding="same", input_shape=[28, 28, 1], activation='relu'),
     keras.layers.MaxPool2D((2,2)),
     keras.layers.Dropout(0.25),
@@ -31,6 +35,8 @@ model = keras.Sequential([
     keras.layers.Dropout(0.25),
 
     keras.layers.Flatten(),
+    keras.layers.Dense(1024, activation='relu'),
+    keras.layers.Dropout(0.25),
     keras.layers.Dense(256, activation='relu'),
     keras.layers.BatchNormalization(),
     keras.layers.Dropout(0.25),
@@ -40,10 +46,9 @@ model.compile(optimizer='RMSprop', loss='categorical_crossentropy', metrics=['ac
 
 # train the model
 model.fit(
-    #train_img, train_label,
-    datagen.flow(train_img, train_label, batch_size=96),
+    datagen.flow(train_img, train_label, batch_size=256),
     validation_data=(test_img,test_label),
-    epochs=10,
+    epochs=20,
     callbacks=[learning_rate_reduction]
 )
 test_loss,test_acc = model.evaluate(test_img, test_label)
