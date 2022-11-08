@@ -20,7 +20,7 @@ Live demo for the original repo:
 ## Installing
 Clone this repository to your local computer
 ```bash
-git https://github.com/bensonruan/Hand-Written-Digit-Recognition.git
+git clone https://github.com/bensonruan/Hand-Written-Digit-Recognition.git
 ```
 Point your localhost to the cloned root directory
 
