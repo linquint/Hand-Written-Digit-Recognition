@@ -1,14 +1,25 @@
 # Hand Written Digit Recognition
- Hand Written Digit Recognition using javascript library tensorflowjs
+ Hand Written Digit Recognition using javascript library TensorFlow.js
+
+## Changes Made to This Fork
+ * Implemented data augmentation
+ * Implemented learning rate reduction
+ * Made some changes to the model architecture
+
+After 20 epochs this model reached 99.68% of accuracy using the test dataset.
  
 ## Live Demo
+Live demo for this fork:
+**[https://hand-written-digit-recognition.pages.dev/](https://hand-written-digit-recognition.pages.dev/)**
+
+Live demo for the original repo:
 **[https://bensonruan.com/handwritten-digit-recognition-with-tensorflow-js/](https://bensonruan.com/handwritten-digit-recognition-with-tensorflow-js/)**
 
 ![handwritten-recognition](https://bensonruan.com/wp-content/uploads/2019/09/handwritten-recognition-5.gif)
  
 ## Installing
 Clone this repository to your local computer
-``` bash
+```bash
 git https://github.com/bensonruan/Hand-Written-Digit-Recognition.git
 ```
 Point your localhost to the cloned root directory
