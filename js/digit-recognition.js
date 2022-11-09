@@ -3,11 +3,11 @@
 //-------------------
 let model;
 
-var canvasWidth           	= 150;
-var canvasHeight 			= 150;
+var canvasWidth           	= 200;
+var canvasHeight 			= 200;
 var canvasStrokeStyle		= "white";
 var canvasLineJoin			= "round";
-var canvasLineWidth       	= 10;
+var canvasLineWidth       	= 7;
 var canvasBackgroundColor 	= "black";
 var canvasId              	= "canvas";
 
@@ -294,6 +294,6 @@ function displayLabel(data) {
             max = data[i];
         }
     }
-	$(".prediction-text").html("Predicting you draw <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence")
+	$(".prediction-text").html("Predicting you drew <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence")
 }
 
